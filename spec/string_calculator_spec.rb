@@ -1,4 +1,4 @@
-require './lib/string_calculator.rb'
+require './lib/string_calculator'
 
 
 describe StringCalculator do
