@@ -1,10 +1,20 @@
 class StringCalculator
   
    def add(string_numbers="")
-       neg_values = []
-       alph_values = []
-       @stringnumbers = string_numbers.split ","
-       if !@stringnumbers.empty?
+        neg_values = []
+        alph_values = []
+        sepval = [","]
+        if string_numbers =~ /^\/\/.*/
+         seprtnum = string_numbers.split("//")[1].split("\n")[0]
+         sepval = seprtnum.split("][").map { |v| v.gsub("[",""); }
+         sepval.map! { |v| v.gsub("]",""); }
+         string_numbers = string_numbers.split("\n")[1]
+        else
+         string_numbers = string_numbers.gsub "\n" , sepval[0]
+        end
+        sepval.each { |seprt| string_numbers = string_numbers.gsub seprt, ","}
+        @stringnumbers = string_numbers.split ","
+        if !@stringnumbers.empty?
          @stringnumbers.each do |sn|
            alph_values << sn if sn.match?(/[A-Za-z]/)
            neg_values << sn.to_i if sn.to_i < 0
