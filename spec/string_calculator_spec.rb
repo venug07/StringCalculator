@@ -25,6 +25,20 @@ describe StringCalculator do
     it "should throw exception for alphabets" do
       expect { @calculator.add("a,b,3")}.to raise_exception {|exp| exp.message.should eql "Alphabets not allowed a, b" }
     end
+    
+    it "should return the correct output for new line between numbers" do
+      digitsum = @calculator.add("1\n2,3")
+      digitsum.should eql 6
+     end
+    
+    it "For delimeter like //;\n1;2 should return 3" do
+      @calculator.add("//;\n1;2").should eql 3
+    end
+    
+    it "should return the correct output for multiple delimeters" do
+      digitsum = @calculator.add("//[***][---]\n1***6***7---3")
+      digitsum.should eql 17
+    end
   end
   
 end
