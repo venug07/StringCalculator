@@ -17,6 +17,10 @@ describe StringCalculator do
       digitsum = @calculator.add("")
       digitsum.should eql 0
     end
+    
+    it "should raise the exception for negative values" do
+      expect { @calculator.add("-2,-3,1")}.to raise_exception {|exp| exp.message.should eql "Negative numbers not allowed -2, -3" }
+    end
   end
   
 end
