@@ -1,1 +1,1 @@
-# stringcalculator
+# StringCalculator
