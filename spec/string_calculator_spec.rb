@@ -12,6 +12,11 @@ describe StringCalculator do
       digitsum = @calculator.add("1,2")
       expect(digitsum).to eql(3)
     end
+    
+    it "should return 0 if string is empty" do
+      digitsum = @calculator.add("")
+      digitsum.should eql 0
+    end
   end
   
 end
