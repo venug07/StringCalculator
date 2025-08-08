@@ -21,6 +21,10 @@ describe StringCalculator do
     it "should raise the exception for negative values" do
       expect { @calculator.add("-2,-3,1")}.to raise_exception {|exp| exp.message.should eql "Negative numbers not allowed -2, -3" }
     end
+    
+    it "should throw exception for alphabets" do
+      expect { @calculator.add("a,b,3")}.to raise_exception {|exp| exp.message.should eql "Alphabets not allowed a, b" }
+    end
   end
   
 end
